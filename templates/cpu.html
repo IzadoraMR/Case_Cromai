@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Informações da CPU</title>
+</head>
+<body>
+   
+    <div class="container ">
+        <div class="row">
+            <div class="col-md-6 p-3">
+                <div class="card ">
+                    <div class="card-body">
+                        <h3 class="text-center ">Informações da CPU</h3>
+                        <div id="cpu-info">
+                            <div class="">
+                                <div class="col-md-12">
+                                    <h3 class="progress-title">CPU1</h3>
+                                    <div class="progress">
+                                        <div id="cpu1-bar" class="progress-bar cpu1" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                            <span id="cpu1-text">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <h3 class="progress-title">CPU2</h3>
+                                    <div class="progress">
+                                        <div id="cpu2-bar" class="progress-bar cpu2" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                           <span id="cpu2-text">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="">
+                                <div class="col-md-12">
+                                    <h3 class="progress-title">CPU3</h3>
+                                    <div class="progress">
+                                        <div id="cpu3-bar" class="progress-bar cpu3" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                            <span id="cpu3-text">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <h3 class="progress-title">CPU4</h3>
+                                    <div class="progress">
+                                        <div id="cpu4-bar" class="progress-bar cpu4" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                            <span id="cpu4-text">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                                <div class="col-md-12">
+                                    <h3 class="progress-title">CPU Total</h3>
+                                    <div class="progress">
+                                        <div id="totalcpu-bar" class="progress-bar cput custom-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                            <span id="totalcpu-text">0%</span>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        <div id="cpu-chart"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 p-3">
+                <div class="card" >
+                    <div class="card-body ">
+                        <h3 class="text-center ">Informações do Disco</h3>
+                        <div class="col-md-10 mx-auto">
+                            <div class="card sub-card ">
+                                <div class="card-body">
+                                    <h3 class="progress-title">Disco</h3>
+                                    <div class="progress">
+                                        <div id="usodiscop-bar" class="progress-bar disco" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                            <span id="usodiscop-text">0%</span>
+                                        </div>
+                                    </div>
+                                    <div class="row text-center mt-4">
+                                        <div class="col-4 border-right">
+                                            <div class="h5 font-weight-bold mb-0" id="tamdisco-text">0G</div>
+                                            <span class="small text-gray">Total</span>
+                                        </div>
+                                        <div class="col-4 border-right">
+                                            <div class="h5 font-weight-bold mb-0" id="usodisco-text">0G</div>
+                                            <span class="small text-gray">Usado</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="h5 font-weight-bold mb-0" id="dispdisco-text">0G</div>
+                                            <span class="small text-gray">Disponível</span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+                        <div id="disco-chart"></div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="col-md-6 p-3">
+                <div class="card" >
+                    <div class="card-body ">
+                        <h3 class="text-center ">Informações da Memória</h3>
+                        <div class="col-md-10 mx-auto">
+                            <div class="card sub-card ">
+                                <div class="card-body">
+                                    <h3 class="progress-title">Memória</h3>
+                                    <div class="progress">
+                                        <div id="pmemusada-bar" class="progress-bar memoria" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                            <span id="porcent_mem_Usada">0%</span>
+                                        </div>
+                                    </div>
+                                    <div class="row text-center mt-4">
+                                        <div class="col-4 border-right">
+                                            <div class="h5 font-weight-bold mb-0" id="memtotal">0M</div>
+                                            <span class="small text-gray">Total</span>
+                                        </div>
+                                        <div class="col-4 border-right">
+                                            <div class="h5 font-weight-bold mb-0" id="memusada">0M</div>
+                                            <span class="small text-gray">Usado</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="h5 font-weight-bold mb-0" id="memlivre">0M</div>
+                                            <span class="small text-gray">Livre</span>
+                                        </div>
+                                    </div>
+                                    <div class="row text-center mt-4">
+                                        <div class="col-4 border-right">
+                                            <div class="h5 font-weight-bold mb-0" id="memcompart">0M</div>
+                                            <span class="small text-gray">Compartilhada</span>
+                                        </div>
+                                        <div class="col-4 border-right">
+                                            <div class="h5 font-weight-bold mb-0" id="memcache">0M</div>
+                                            <span class="small text-gray">buff/cache</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="h5 font-weight-bold mb-0" id="memdispo">0M</div>
+                                            <span class="small text-gray">Disponível</span>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </div>
+                            <div id="memoria-chart"></div>
+
+                        </div>
+                        <div class="col-md-10 mx-auto">
+                            <div class="card sub-card">
+                                <div class="card-body">
+                                    <h3 class="progress-title">Swap</h3>
+                                    <div class="progress">
+                                        <div id="pswapsada-bar" class="progress-bar swap" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                            <span id="porcent_swap_Usada">0%</span>
+                                        </div>
+                                    </div>
+                                    <div class="row text-center mt-4">
+                                        <div class="col-4 border-right">
+                                            <div class="h5 font-weight-bold mb-0" id="swaptotal">0M</div>
+                                            <span class="small text-gray">Total</span>
+                                        </div>
+                                        <div class="col-4 border-right">
+                                            <div class="h5 font-weight-bold mb-0" id="swapusada">0M</div>
+                                            <span class="small text-gray">Usado</span>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="h5 font-weight-bold mb-0" id="swaplivre">0M</div>
+                                            <span class="small text-gray">Livre</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function updateCPUInfo() {
+            $.ajax({
+                url: 'http://localhost:5000/get_system_data',  
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                
+                var memTotal = data.memTotal;
+                var memUsada = data.memUsada;
+                var porcent_mem_Usada = ((memUsada / memTotal) * 100)
+                var porcent_swap_Usada = ((data.swapUsada / data.swapTotal) * 100)
+                $('#cpu1-bar').css('width', data.CPU1 + '%');
+                $('#cpu1-bar').attr('aria-valuenow', data.CPU1);
+                $('#cpu1-text').text(data.CPU1 + '%');
+
+                $('#cpu2-bar').css('width', data.CPU2 + '%');
+                $('#cpu2-bar').attr('aria-valuenow', data.CPU2);
+                $('#cpu2-text').text(data.CPU2 + '%');
+
+                $('#cpu3-bar').css('width', data.CPU3 + '%');
+                $('#cpu3-bar').attr('aria-valuenow', data.CPU3);
+                $('#cpu3-text').text(data.CPU3 + '%');
+
+                $('#cpu4-bar').css('width', data.CPU4 + '%');
+                $('#cpu4-bar').attr('aria-valuenow', data.CPU4);
+                $('#cpu4-text').text(data.CPU4 + '%');
+
+                $('#totalcpu-bar').css('width', data.TotalCPU + '%');
+                $('#totalcpu-bar').attr('aria-valuenow', data.TotalCPU);
+                $('#totalcpu-text').text(data.TotalCPU + '%');
+
+                $('#usodiscop-bar').css('width', data.UsoDiscoP);
+                $('#usodiscop-bar').attr('aria-valuenow', data.UsoDiscoP);
+
+                $('#pmemusada-bar').css('width', porcent_mem_Usada + '%'); 
+                $('#pmemusada-bar').attr('aria-valuenow', porcent_mem_Usada); 
+
+                $('#pswapsada-bar').css('width', porcent_swap_Usada + '%'); 
+                $('#pswapsada-bar').attr('aria-valuenow', porcent_swap_Usada); 
+
+                $('#usodiscop-text').text(data.UsoDiscoP  + '%' );
+
+                $('#tamdisco-text').text(data.TamDisco + 'G');
+
+                $('#usodisco-text').text(data.UsoDisco + 'G');
+
+                $('#dispdisco-text').text(data.dispDisco + 'G');
+
+                
+                $('#cpu1').text(data.CPU1);
+                $('#cpu2').text(data.CPU2);
+                $('#cpu3').text(data.CPU3);
+                $('#cpu4').text(data.CPU4);
+                $('#totalcpu').text(data.TotalCPU + 'G');
+                $('#tamdisco').text(data.TamDisco + 'G');
+                $('#usodisco').text(data.UsoDisco + 'G');
+                $('#usodiscop').text(data.UsoDiscoP );
+                $('#dispdisco').text(data.dispDisco);
+                $('#memtotal').text(data.memTotal + 'M');
+                $('#memusada').text(data.memUsada + 'M');
+                $('#memlivre').text(data.memLivre + 'M');
+                $('#memcompart').text(data.memCompart + 'M');
+                $('#memcache').text(data.memCache + 'M');
+                $('#memdispo').text(data.memDispo + 'M');
+                $('#swaptotal').text(data.swapTotal+ 'M');
+                $('#swapusada').text(data.swapUsada+ 'M');
+                $('#swaplivre').text(data.swapLivre+ 'M');
+                $('#porcent_mem_Usada').text(porcent_mem_Usada.toFixed(2) + '%');
+                $('#porcent_swap_Usada').text(porcent_swap_Usada.toFixed(2) + '%');
+
+                }
+            });
+        }
+
+        
+        setInterval(updateCPUInfo, 1000);
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        var chartDiv = document.getElementById('cpu-chart');
+        var chart;
+
+        function updateChart() {
+            $.ajax({
+                url: '/cpu-data',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    if (!chart) {
+                        chart = Plotly.newPlot(chartDiv, [{
+                            x: data.timestamp,
+                            y: data.cpu_usage,
+                            type: 'scatter',
+                            mode: 'lines',
+                            name: 'CPU Usage'
+                        }], {
+                            // Define os intervalos para os eixos X e Y
+                            
+                            yaxis: { range: [0, 100] }
+                        });
+                    } else {
+                        // Configure o eixo X apenas no bloco 'else'
+                        Plotly.update(chartDiv, {
+                            x: [data.timestamp],
+                            y: [data.cpu_usage]
+                        }, {
+                            'xaxis.tickvals': [data.timestamp[0], data.timestamp[data.timestamp.length - 1]],
+                            'xaxis.ticktext': [data.timestamp[0], data.timestamp[data.timestamp.length - 1]]
+                        });
+                    }
+                }
+            });
+        }
+        setInterval(updateChart, 1200);
+
+    </script>
+    <script>
+        var chartDivDisco = document.getElementById('disco-chart');
+        var chartDisco;
+
+        function updateChartDisco() {
+            $.ajax({
+                url: '/disco-data',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    if (!chartDisco) {
+                        chartDisco = Plotly.newPlot(chartDivDisco, [{
+                            x: data.timestamp,
+                            y: data.disco_usage,
+                            type: 'scatter',
+                            mode: 'lines',
+                            name: 'Disco Usage'
+                        }], {
+                            // Define os intervalos para os eixos X e Y
+                            
+                            yaxis: { range: [0, 100] }
+                        });
+                    } else {
+                        // Configure o eixo X apenas no bloco 'else'
+                        Plotly.update(chartDivDisco, {
+                            x: [data.timestamp],
+                            y: [data.disco_usage]
+                        }, {
+                            'xaxis.tickvals': [data.timestamp[0], data.timestamp[data.timestamp.length - 1]],
+                            'xaxis.ticktext': [data.timestamp[0], data.timestamp[data.timestamp.length - 1]]
+                        });
+                    }
+                }
+            });
+        }
+        setInterval(updateChartDisco, 1000);
+
+    </script>
+    <script>
+        var chartDivMemoria = document.getElementById('memoria-chart');
+        var chartMemoria;
+
+        function updateChartMemoria() {
+            $.ajax({
+                url: '/memoria-data',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    if (!chartMemoria) {
+                        chartMemoria = Plotly.newPlot(chartDivMemoria, [{
+                            x: data.timestamp,
+                            y: data.memoria_usage,
+                            type: 'scatter',
+                            mode: 'lines',
+                            name: 'Memoria Usage'
+                        }], {
+                            // Define os intervalos para os eixos X e Y
+                            
+                            yaxis: { range: [0, 100] }
+                        });
+                    } else {
+                        // Configure o eixo X apenas no bloco 'else'
+                        Plotly.update(chartDivMemoria, {
+                            x: [data.timestamp],
+                            y: [data.memoria_usage]
+                        }, {
+                            'xaxis.tickvals': [data.timestamp[0], data.timestamp[data.timestamp.length - 1]],
+                            'xaxis.ticktext': [data.timestamp[0], data.timestamp[data.timestamp.length - 1]]
+                        });
+                    }
+                }
+            });
+        }
+        setInterval(updateChartMemoria, 1000);
+
+    </script>
+    
+    
+    <style>
+.progress span{
+    color: black;
+    position: absolute;
+            z-index: 1;
+            width: 100%;
+            text-align: end;
+            top: 2px;
+            left:-5px;
+}
+.progress-title{
+    font-size: 10px;
+    font-weight: 700;
+    color: #1c2647;
+    margin: 5px 5px 5px ;
+}
+.progress{
+    height: 30px;
+    background: #fff;
+    border-top: 5px solid #1c2647;
+    border-bottom: 5px solid #1c2647;
+    border-radius: 0;
+    margin-bottom: 25px;
+    overflow: visible;
+    position: relative;
+}
+.progress:before,
+.progress:after{
+    content: "";
+    width: 5px;
+    background: #1c2647;
+    position: absolute;
+    top: 0;
+    left: -5px;
+    bottom: 0;
+}
+.progress:after{
+    left: auto;
+    right: -5px;
+}
+.progress .progress-bar{
+    border: none;
+    box-shadow: none;
+    -webkit-animation: 2s linear 0s normal none infinite running progress-bar-stripes,animate-positive 1s;
+    animation: 2s linear 0s normal none infinite running progress-bar-stripes,animate-positive 1s;
+}
+@-webkit-keyframes animate-positive{
+    0%{ width: 0; }
+}
+@keyframes animate-positive{
+    0%{ width: 0; }
+}
+.sub-card{
+    background-color: rgb(241, 237, 239);
+    justify-content: center;
+}
+body{
+    background-color: #063A50;
+}
+.cpu1{
+    background-color: #E64A30;
+}
+.cpu2{
+    background-color: #F08C12;
+}
+.cpu3{
+    background-color: #D9D90F;
+}
+.cpu4{
+    background-color: #A0C84B;
+}
+.cput{
+    background-color: #24A850;
+}
+.disco, .memoria, .swap {
+    background-color: #18624F;
+}
+
+    </style>
+</body>
+</html>

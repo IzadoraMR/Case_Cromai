@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="card my-5">
+    
+              <form  method="POST" action="/login" class="card-body cardbody-color p-lg-5">
+                <h1 class="text-center text-dark ">Sign In</h1>
+                <div class="text-center">
+                  <img src="https://cdn.pixabay.com/photo/2016/03/31/19/56/avatar-1295397__340.png" class="img-fluid profile-image-pic img-thumbnail rounded-circle my-3"
+                    width="200px" alt="profile">
+                </div>
+    
+                <div class="mb-3">
+                  <label for="hostname" class="form-label">Hostname</label>
+                  <input type="text" class="form-control" id="hostname" name="hostname" required placeholder="172.18.0.1">
+                </div>
+                <div class="mb-3">
+                  <label for="hostname" class="form-label">Username</label>
+                  <input type="text" class="form-control" id="username" name="username" required placeholder="root">
+                </div>
+                <div class="text-center"><button type="submit" value="Login" class="btn btn-color px-5 mb-5 w-100">Login</button></div>
+                <div id="mensagem" class="mensagem" style="display: none;"></div>
+              </form>
+              {% if mensagem %}
+           <div class="mensagem">
+               {% if mensagem.status == 200 %}
+                   <p class="success">{{ mensagem.message }}</p>
+               {% else %}
+                   <p class="error">{{ mensagem.reason }}</p>
+               {% endif %}
+           </div>
+       {% endif %}
+            </div>
+          </div>
+        </div>
+      </div> 
+</body>
+</html>
+
