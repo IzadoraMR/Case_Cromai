@@ -144,6 +144,6 @@ python dados_mainframe.py
 http://localhost:5000
 ```
 #### A página abrirá em uma tela de login, utilize como hostname o ip local da máquina e no username utilize o usuário da máquina 
-
-## Caso enfremte algum problena na execução do código estou à disposição em izadora.mirandar@hotmail.com
+### Fiz um vídeo demonstrando a execução do código: https://youtu.be/HF0_iaXgtd0
+## Caso enfremte algum problena na execução do código estou à disposição em izadora.mribeiro@hotmail.com
 
