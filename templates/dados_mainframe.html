@@ -4,68 +4,84 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <title>Informações da CPU</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dados_mainframe.css') }}">
+    <title>Mainframe</title>
 </head>
 <body>
-   
-    <div class="container ">
-        <div class="row">
-            <div class="col-md-6 p-3">
-                <div class="card ">
+    <nav class="navbar ">
+        <div class="container-fluid">
+            <h1 class="navbar-brand mx-auto custom-font-size" href="#">Mainframe</h1>
+            <form action="{{ url_for('logout') }}" method="post" class="form-inline">
+                <input type="submit" class="btn btn-primary btn-lg" value="Logout">
+            </form>
+        </div>
+    </nav>
+    
+    
+    
+
+    <div class="custom-container ">
+        <div class="row p-3 d-flex align-items-stretch">
+            <div class="col-md-8 p-3 col-sm-12">
+                <div class="card h-100">
                     <div class="card-body">
                         <h3 class="text-center ">Informações da CPU</h3>
-                        <div id="cpu-info">
-                            <div class="">
-                                <div class="col-md-12">
-                                    <h3 class="progress-title">CPU1</h3>
-                                    <div class="progress">
-                                        <div id="cpu1-bar" class="progress-bar cpu1" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                            <span id="cpu1-text">0%</span>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-12">
+                                <div class="">
+                                    <div class="col-md-12 col-sm-12">
+                                        <h3 class="progress-title">CPU1</h3>
+                                        <div class="progress">
+                                            <div id="cpu1-bar" class="progress-bar cpu1" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                                <span id="cpu1-text">0%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+                                        <h3 class="progress-title">CPU2</h3>
+                                        <div class="progress">
+                                            <div id="cpu2-bar" class="progress-bar cpu2" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                            <span id="cpu2-text">0%</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-12">
-                                    <h3 class="progress-title">CPU2</h3>
-                                    <div class="progress">
-                                        <div id="cpu2-bar" class="progress-bar cpu2" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                           <span id="cpu2-text">0%</span>
+                                <div class="">
+                                    <div class="col-md-12 col-sm-12">
+                                        <h3 class="progress-title">CPU3</h3>
+                                        <div class="progress">
+                                            <div id="cpu3-bar" class="progress-bar cpu3" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                                <span id="cpu3-text">0%</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-sm-12">
+                                        <h3 class="progress-title">CPU4</h3>
+                                        <div class="progress">
+                                            <div id="cpu4-bar" class="progress-bar cpu4" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                                <span id="cpu4-text">0%</span>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+                                    <div class="col-md-12 col-sm-12">
+                                        <h3 class="progress-title">CPU Total</h3>
+                                        <div class="progress">
+                                            <div id="totalcpu-bar" class="progress-bar cput custom-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                                                <span id="totalcpu-text">0%</span>
+                                            </div>
+                                        </div>
+                                    </div>
                             </div>
-                            <div class="">
-                                <div class="col-md-12">
-                                    <h3 class="progress-title">CPU3</h3>
-                                    <div class="progress">
-                                        <div id="cpu3-bar" class="progress-bar cpu3" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                            <span id="cpu3-text">0%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <h3 class="progress-title">CPU4</h3>
-                                    <div class="progress">
-                                        <div id="cpu4-bar" class="progress-bar cpu4" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                            <span id="cpu4-text">0%</span>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="col-md-6 col-sm-12">
+                              <div id="cpu-chart" class="plotly-container"></div>
                             </div>
-                            
-                                <div class="col-md-12">
-                                    <h3 class="progress-title">CPU Total</h3>
-                                    <div class="progress">
-                                        <div id="totalcpu-bar" class="progress-bar cput custom-progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100">
-                                            <span id="totalcpu-text">0%</span>
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        <div id="cpu-chart"></div>
+                        </div>    
                     </div>
-                </div>
+                    </div>
+                
             </div>
-            <div class="col-md-6 p-3">
+            <div class="col-md-4 h-100 p-3 col-sm-12">
                 <div class="card" >
                     <div class="card-body ">
                         <h3 class="text-center ">Informações do Disco</h3>
@@ -102,11 +118,15 @@
                 </div>
                 
             </div>
-            <div class="col-md-6 p-3">
+            
+            <div class="col-md-12 p-3 col-sm-12 ">
+                
                 <div class="card" >
                     <div class="card-body ">
-                        <h3 class="text-center ">Informações da Memória</h3>
-                        <div class="col-md-10 mx-auto">
+                        <h3 class="text-center p-3">Informações da Memória</h3>
+                        <div class="row">
+                            
+                            <div class="col-md-6 mx-auto col-sm-12">
                             <div class="card sub-card ">
                                 <div class="card-body">
                                     <h3 class="progress-title">Memória</h3>
@@ -145,12 +165,11 @@
                                     </div>
                                     
                                 </div>
-                                
                             </div>
                             <div id="memoria-chart"></div>
 
                         </div>
-                        <div class="col-md-10 mx-auto">
+                        <div class="col-md-6 mx-auto col-sm-12">
                             <div class="card sub-card">
                                 <div class="card-body">
                                     <h3 class="progress-title">Swap</h3>
@@ -173,11 +192,19 @@
                                             <span class="small text-gray">Livre</span>
                                         </div>
                                     </div>
+                                    <div class="row text-center mt-4"></div>
+                                    <div class="row text-center mt-4"></div>
+                                    <div class="row text-center mt-4"></div>
                                 </div>
-                            </div>
+                                
+                            </div><div id="swap-chart"></div>
                         </div>
+                        
+                        </div>
+
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>
@@ -282,12 +309,17 @@
                             mode: 'lines',
                             name: 'CPU Usage'
                         }], {
-                            // Define os intervalos para os eixos X e Y
-                            
-                            yaxis: { range: [0, 100] }
+                            yaxis: { range: [0, 100] },
+                            title: 'Uso da CPU (60s)',
+                                margin: { t: 30, b: 30, l: 30, r: 30}
+                        },
+                        config = {
+                            displayModeBar: false, 
+                            displaylogo: false,   
+                            scrollZoom: false,    
+                            showTips: false       
                         });
                     } else {
-                        // Configure o eixo X apenas no bloco 'else'
                         Plotly.update(chartDiv, {
                             x: [data.timestamp],
                             y: [data.cpu_usage]
@@ -320,12 +352,22 @@
                             mode: 'lines',
                             name: 'Disco Usage'
                         }], {
-                            // Define os intervalos para os eixos X e Y
                             
-                            yaxis: { range: [0, 100] }
+                            
+                            yaxis: { range: [0, 100] },
+                            title: 'Uso do Disco (60s)',
+                                margin: { t: 30, b: 30, l: 30, r: 30}
+                            
+                            
+                        },
+                        config = {
+                            displayModeBar: false, 
+                            displaylogo: false,   
+                            scrollZoom: false,    
+                            showTips: false       
                         });
                     } else {
-                        // Configure o eixo X apenas no bloco 'else'
+                        
                         Plotly.update(chartDivDisco, {
                             x: [data.timestamp],
                             y: [data.disco_usage]
@@ -358,12 +400,18 @@
                             mode: 'lines',
                             name: 'Memoria Usage'
                         }], {
-                            // Define os intervalos para os eixos X e Y
+                           
                             
-                            yaxis: { range: [0, 100] }
+                            yaxis: { range: [0, 100] },
+                            title: 'Uso da Memória (60s)',
+                        },
+                        config = {
+                            displayModeBar: false, 
+                            displaylogo: false,   
+                            scrollZoom: false,    
+                            showTips: false       
                         });
                     } else {
-                        // Configure o eixo X apenas no bloco 'else'
                         Plotly.update(chartDivMemoria, {
                             x: [data.timestamp],
                             y: [data.memoria_usage]
@@ -378,86 +426,50 @@
         setInterval(updateChartMemoria, 1000);
 
     </script>
-    
-    
-    <style>
-.progress span{
-    color: black;
-    position: absolute;
-            z-index: 1;
-            width: 100%;
-            text-align: end;
-            top: 2px;
-            left:-5px;
-}
-.progress-title{
-    font-size: 10px;
-    font-weight: 700;
-    color: #1c2647;
-    margin: 5px 5px 5px ;
-}
-.progress{
-    height: 30px;
-    background: #fff;
-    border-top: 5px solid #1c2647;
-    border-bottom: 5px solid #1c2647;
-    border-radius: 0;
-    margin-bottom: 25px;
-    overflow: visible;
-    position: relative;
-}
-.progress:before,
-.progress:after{
-    content: "";
-    width: 5px;
-    background: #1c2647;
-    position: absolute;
-    top: 0;
-    left: -5px;
-    bottom: 0;
-}
-.progress:after{
-    left: auto;
-    right: -5px;
-}
-.progress .progress-bar{
-    border: none;
-    box-shadow: none;
-    -webkit-animation: 2s linear 0s normal none infinite running progress-bar-stripes,animate-positive 1s;
-    animation: 2s linear 0s normal none infinite running progress-bar-stripes,animate-positive 1s;
-}
-@-webkit-keyframes animate-positive{
-    0%{ width: 0; }
-}
-@keyframes animate-positive{
-    0%{ width: 0; }
-}
-.sub-card{
-    background-color: rgb(241, 237, 239);
-    justify-content: center;
-}
-body{
-    background-color: #063A50;
-}
-.cpu1{
-    background-color: #E64A30;
-}
-.cpu2{
-    background-color: #F08C12;
-}
-.cpu3{
-    background-color: #D9D90F;
-}
-.cpu4{
-    background-color: #A0C84B;
-}
-.cput{
-    background-color: #24A850;
-}
-.disco, .memoria, .swap {
-    background-color: #18624F;
-}
+    <script>
+        var chartDivSwap = document.getElementById('swap-chart');
+        var chartSwap;
 
-    </style>
+        function updateChartSwap() {
+            $.ajax({
+                url: '/swap-data',
+                type: 'GET',
+                dataType: 'json',
+                success: function(data) {
+                    if (!chartSwap) {
+                        chartSwap = Plotly.newPlot(chartDivSwap, [{
+                            x: data.timestamp,
+                            y: data.swap_usage,
+                            type: 'scatter',
+                            mode: 'lines',
+                            name: 'Swap Usage'
+                        }], {
+                            yaxis: { range: [0, 100] },
+                            title: 'Uso do Swap (60s)',
+                        },
+                        config = {
+                            displayModeBar: false, 
+                            displaylogo: false,   
+                            scrollZoom: false,    
+                            showTips: false       
+                        });
+                    } else {
+                        
+                        Plotly.update(chartDivSwap, {
+                            x: [data.timestamp],
+                            y: [data.swap_usage]
+                        }, {
+                            'xaxis.tickvals': [data.timestamp[0], data.timestamp[data.timestamp.length - 1]],
+                            'xaxis.ticktext': [data.timestamp[0], data.timestamp[data.timestamp.length - 1]]
+                        });
+                    }
+                }
+            });
+        }
+        setInterval(updateChartSwap, 1000);
+
+    </script>
+    
+
 </body>
 </html>

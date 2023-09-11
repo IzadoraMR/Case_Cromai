@@ -16,12 +16,13 @@ disk_command = "df -h /"
 memory_command = "free -m"
 
 
-
+#A função system se conecta ao mainframe, obtendo os dados de CPU,disco e memória, após isso se conecta ao banco, slavando os dados.
 def system():
     conexao = sqlite3.connect("dados/banco.db")
     cursor = conexao.cursor()
     
     ssh = paramiko.SSHClient()
+    
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh_agent = paramiko.Agent()
     with open(arquivo_json, "r") as json_file:
@@ -29,7 +30,7 @@ def system():
     hostname = dados["hostname"]
     username = dados["username"]
 
-    ssh.connect(hostname, username=username, allow_agent=True)
+    ssh.connect(hostname, port = 22,username=username, allow_agent=True)
     hora = datetime.datetime.now().strftime('%d-%m-%Y %H:%M:%S')
     # CPU ------------------------------------------------------------------------------
     stdin, stdout, stderr = ssh.exec_command(cpu_command)
@@ -115,11 +116,11 @@ def system():
 @app.route('/')
 def index():
     return "Servidor Flask em execução em http://127.0.0.1:5020."
-
+#A função get_data faz o envio dos dados retornados da função system
 @app.route('/get_system_data', methods=["GET"])
-def get_cpu_data():
-    cpu_info = system()
-    return jsonify(cpu_info), 200
+def get_data():
+    info = system()
+    return jsonify(info), 200
 
 
 if __name__ == '__main__':

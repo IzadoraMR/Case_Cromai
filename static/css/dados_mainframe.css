@@ -1,0 +1,118 @@
+    
+    .progress span{
+        color: black;
+        position: absolute;
+                z-index: 1;
+                width: 100%;
+                text-align: end;
+                top: 2px;
+                left:-5px;
+    }
+    .progress-title{
+        font-size: 10px;
+        font-weight: 700;
+        color: #1c2647;
+        margin: 10px 2px 2px ;
+    }
+    .progress{
+        height: 30px;
+        background: #fff;
+        border-top: 5px solid #1c2647;
+        border-bottom: 5px solid #1c2647;
+        border-radius: 0;
+        margin-bottom: 10px;
+        overflow: visible;
+        position: relative;
+    }
+    .progress:before,
+    .progress:after{
+        content: "";
+        width: 5px;
+        background: #1c2647;
+        position: absolute;
+        top: 0;
+        left: -5px;
+        bottom: 0;
+    }
+    .progress:after{
+        left: auto;
+        right: -5px;
+    }
+    .progress .progress-bar{
+        border: none;
+        box-shadow: none;
+        -webkit-animation: 2s linear 0s normal none infinite running progress-bar-stripes,animate-positive 1s;
+        animation: 2s linear 0s normal none infinite running progress-bar-stripes,animate-positive 1s;
+    }
+    @-webkit-keyframes animate-positive{
+        0%{ width: 0; }
+    }
+    @keyframes animate-positive{
+        0%{ width: 0; }
+    }
+    .sub-card{
+        background-color: rgb(241, 237, 239);
+        justify-content: center;
+    }
+    body{
+        background-color: #063A50;
+    }
+    .cpu1{
+        background-color: #E64A30;
+    }
+    .cpu2{
+        background-color: #F08C12;
+    }
+    .cpu3{
+        background-color: #D9D90F;
+    }
+    .cpu4{
+        background-color: #A0C84B;
+    }
+    .cput{
+        background-color: #24A850;
+    }
+    .disco, .memoria, .swap {
+        background-color: #18624F;
+    }
+    #cpu-chart{
+        height: 20em;
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        
+    }
+    #disco-chart{
+        height: 9em;
+        margin-top: 2% !important;
+        margin-bottom: 0 !important;
+        
+    }
+    #swap-chart{
+    
+        height: 25em;
+    }
+    #memoria-chart{
+        height: 25em;
+    }
+    .custom-container {
+        width: 90%; 
+        margin: 0 auto; 
+        padding: 20px; 
+    }
+    submit{
+        padding: 20px;
+    }
+    .card{
+        display: flex;
+    }
+    .navbar{
+        background-color: #18624F;
+    
+    }
+    .custom-font-size {    
+        color: #fff;
+        font-size: 30px;
+       
+    }
+    
+    

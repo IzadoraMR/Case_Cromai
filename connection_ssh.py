@@ -1,27 +1,29 @@
 import paramiko
-import os
 import json
 arquivo_json = "config.json"
 
+
+#Função responsável pela autenticação do usuário 
 def connect_ssh(hostname, username):
     try:
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh.connect(hostname, username=username, allow_agent=True)
+        ssh.connect(hostname, port = 22,username=username, allow_agent=True)
         data = {
         "hostname": hostname,
         "username": username
         }
         with open(arquivo_json, "w") as json_file:
             json.dump(data, json_file)
-        message = "true"
         stdin, stdout, stderr = ssh.exec_command('ls')
         print(stdout.readlines())
-        return ssh, message
+        print("Verificação Login")
+        return ssh
     except paramiko.ssh_exception.AuthenticationException:
-        message = "false"
-        return None, message  # Retorna None para indicar que a autenticação falhou
-
+        return None 
+    
+    
+#Função responsável pelo logout do usuário
 def disconnect_ssh(ssh):
     with open(arquivo_json, "w") as json_file:
         pass
