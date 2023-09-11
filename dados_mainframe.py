@@ -104,11 +104,6 @@ def system():
             "swapTotal":swapTotal,
             "swapUsada":swapUsada,
             "swapLivre": swapLivre
-            
-            
-            
-            
-            
         }
     conexao.close()
     return dados
@@ -116,6 +111,7 @@ def system():
 @app.route('/')
 def index():
     return "Servidor Flask em execução em http://127.0.0.1:5020."
+
 #A função get_data faz o envio dos dados retornados da função system
 @app.route('/get_system_data', methods=["GET"])
 def get_data():
